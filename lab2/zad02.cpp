@@ -1,12 +1,11 @@
 #include "zad02.h"
+
+using namespace std;
+
 const int ciagLen = 256;
 int ciag::count = 0;
-/*
- * operator dodaje do siebie obiekt klasy ciag i dowolny ci¹g znakowy np. A + "fda"
- * uwaga na ciekawy sposób zwracania zmiennej. Zapobiego to usuwaniu zwracanej zmiennej z pamiêci po wyjœciu z funkcji.
- * Argumenty: c1 -> obiekt klasy ciag, c2 - dowolny wskaŸnik do ³añcucha znakowego
- * Zwraca: nowy obiekt zalokowany w pamiêci, który jest suma c1 i c2
- */
+
+
 ciag operator+( const ciag & c1, const char * c2 ) {
 	ciag c;
 	c+=c1.str;
@@ -14,18 +13,12 @@ ciag operator+( const ciag & c1, const char * c2 ) {
     return c;
 }
 
-/*
- * Operator wypisywania na ekran. W nawiasie d³ugoœæ ³añcucha ( z nullem )
- */
+
 ostream& operator << (ostream& os, const ciag& x) {
 	os << x.str << " ( " << x.size << " )";
 	return os;
 }
 
-/*
- * Operator pozwalaj¹cy na wygodne wpisywanie ciagu z ekranu.
- * Zmienna ciaglen -> maksymalna d³ugoœæ ci¹gu
- */
 istream& operator >> (istream& is, ciag& x) {
 	char temp[ciagLen]; //bufor
 	cout << "Podaj zawartosci nowego ciagu znakowego, do " << ciagLen << " znakow"<<endl;

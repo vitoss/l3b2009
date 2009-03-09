@@ -8,8 +8,6 @@ using namespace std;
 #include <cstring>
 #include "zad02.cpp"
 
-//Ustawianiei explicite licznika obiektów, nie jest to wymagane, jedynie dla przejrzystoœci
-//
 
 
 int main( void ) {
