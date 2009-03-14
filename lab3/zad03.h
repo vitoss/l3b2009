@@ -43,12 +43,19 @@ public:
 	
 
 	double determinant( const Matrix &mat ); 
-	Matrix transposition( const Matrix &mat ); //~
+	
+	
 	Matrix reverse( const Matrix &mat ); //!
 
-		double min();
+	
+	
+	*/
+	double determinant();
+	double determinant( unsigned int, vector<unsigned int> );
+	Matrix transposition(); //~
+	double min();
 	double max();
-	bool isSymetric?();*/
+	bool isSymetric();
 
 	unsigned int getW() const;
 	unsigned int getK() const;

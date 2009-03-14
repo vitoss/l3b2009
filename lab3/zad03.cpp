@@ -2,6 +2,7 @@
 
 #include "zad03.h"
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -219,7 +220,116 @@ bool operator != (const Matrix &mat1, const Matrix &mat2) {
 	return !(mat1==mat2);
 }
 
+//Normalne :P
+double Matrix::min()  {
+	double m = data[0][0];
+	for( unsigned int i = 0; i<getW(); i++ ) {
+		for( unsigned int k = 0; k<getK(); k++ ) {
+			if( data[i][k] < m ) 
+				m = data[i][k];
+		}
+	}
+	return m;
+}
+double Matrix::max()  {
+	double m = data[0][0];
+	for( unsigned int i = 0; i<getW(); i++ ) {
+		for( unsigned int k = 0; k<getK(); k++ ) {
+			if( data[i][k] > m ) 
+				m = data[i][k];
+		}
+	}
+	return m;
+}
 
+bool Matrix::isSymetric() {
+	//musi byæ kwadratowa
+	if( getW() != getK() )
+		return false;
+
+	for( unsigned int i = 0; i<getW(); i++ ) {
+		for( unsigned int k = 0; k<getK(); k++ ) {
+			if( data[i][k] != data[k][i] )
+				return false;
+		}
+	}
+	return true;
+}
+
+Matrix Matrix::transposition() { //~
+	Matrix res(mk,mw);
+	for( unsigned int i = 0; i<getW(); i++ ) {
+		for( unsigned k=0; k<getK(); k++ ) {
+			res.data[k][i] = data[i][k];
+		}
+	}
+	return res;
+
+}
+
+double Matrix::determinant() {
+	//sprawdzanie rozmiarów
+	if( getW() != getK() ){
+		cout << "Macierz powinna byæ kwadratowa!" << endl;
+		return 0;
+	}
+	double suma = 0;
+	unsigned int l=0;
+	int z = 1;	
+	for( unsigned int i = 0; i<getW(); i++ ) {
+		vector<unsigned int> vec;
+		vec.push_back( i );
+		suma += z*(data[l][i])*(determinant( l+1, vec ));
+		cout << "SUMA NR: " << i << " WYNOSI "<< suma <<endl;
+		z=-z;
+	}
+	return suma;
+}
+//private?
+double Matrix::determinant( unsigned int l, vector<unsigned int> vec ) {
+	
+	cout << "L:" << l << endl <<endl;
+
+	if( l == (getW()-1) ) {
+		//doszlimy do konca i zwracamy szukan¹ wartoœæ
+		for( int m = 0; m < vec.size(); m++ ) {
+			//cout << " = " << m;
+			//sortowanie
+			 //sort( vec.begin(), vec.end() );
+			if( m != vec[m] ) {
+				cout << "SUMA PODCZASTKOWA return[l][m] return[l][m]" << l << " | "<< m << " | " << data[l][m] << endl;
+				return data[l][m];
+			}
+		}
+		cout << "SUMA PODCZASTKOWA return[l][m]" << l << " | "<< l << " | " << data[l][l] << endl;
+		return data[l][l];
+	}
+
+
+	double suma = 0;
+	int z = 1;	
+	int k = 0;
+	
+	for( unsigned int i = 0; i<getW(); i++ ) {
+		vector<unsigned int> vec2( vec );
+		
+		if(  k<vec.size() && vec[k] == i  ) {
+			//opuszczanie zakazanego pasma
+			k++;
+			continue;
+		}
+			
+		vec2.push_back( i );
+		sort(vec2.begin(), vec2.end());
+		
+		double temp = z*(data[l][i])*(determinant( l+1, vec2 ));
+		cout << "Iloczyn = " << temp << endl;
+		suma += temp;
+		z=-z;
+	}
+
+	return suma;
+}
 //STATYCZNE
 Matrix Matrix::allZeros( unsigned int w, unsigned int k ) {
 	Matrix mat(w,k);
