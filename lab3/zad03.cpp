@@ -1,3 +1,4 @@
+//Kodowanie cp-1250
 #include "zad03.h"
 #include <iostream>
 #include <fstream>
