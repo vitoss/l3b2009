@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include "zad03.h"
 using namespace std;
@@ -13,9 +14,9 @@ int main( void ) {
 	vector<double> v3( tab3, tab3+4 );
 	double tab4[] = {12.2,42.3, 314.5,32.6};
 	vector<double> v4( tab4, tab4+4 );
-	double tab5[] = {2,2};
+	double tab5[] = {1,2};
 	vector<double> v5( tab5, tab5+2 );
-	double tab6[] = {1,2};
+	double tab6[] = {3,4};
 	vector<double> v6( tab6, tab6+2 );
 	mat1.setColumn(0, v1 );
 	mat1.setColumn(1, v2 );
@@ -53,7 +54,40 @@ int main( void ) {
 	cout << mat1.isSymetric() <<endl;
 	cout << mat4;
 	cout << mat4.transposition();*/
-	cout << mat1;
-	cout << mat1.determinant();
+	/*double min[10];
+	min[0] = mat1.determinant();
+	min[1] = mat1.minor(1,1); //2174...
+	min[2] = mat1.minor(0,1); //1144
+	min[3] = mat1.minor(2,1); //197.3
+	min[4] = mat1.minor( 0, 0 ); //-57.2
+	min[5] = mat1.minor(3, 3); //-1.1
+	min[6] = mat1.minor(2, 3); //-1.1
+	min[7]=mat1.minor( 3,1 ); //-489.1..
+	for( int i = 0; i<8; i++ ) {
+		cout << min[i]<<endl;
+	}
+	
+
+	
+	ifstream iplik( "input.txt", ifstream::in );
+	
+	unsigned int wi,ki;
+	
+	iplik >> wi;
+	iplik >> ki;
+	Matrix mat6(wi,ki);
+	
+	iplik >> mat6;
+	iplik.close();
+	cout << mat6;
+	ofstream plik( "output.txt" );
+	plik << mat6.reverse();
+	plik.close();
+	//cout << mat1.reverse()<<endl;*/
+
+	//cout << mat1.determinant();
+	Matrix mat7(2,2);
+	cin >> mat7;
+	cout << mat7;
 	return 0;
 }
