@@ -1,5 +1,4 @@
-//Kodowanie cp-1250
-#include "zad03.h"
+ï»¿#include "zad03.h"
 #include <iostream>
 #include <fstream>
 #include <algorithm> //algorytm sortowania
@@ -41,7 +40,7 @@ unsigned int Matrix::getK() const {
 }
 
 //Operatory
-//W razie pora¿ki zwraca 0 i wyswietla odpowiedni komunikat
+//W razie poraÅ¼ki zwraca 0 i wyswietla odpowiedni komunikat
 double Matrix::operator () ( unsigned int w, unsigned int k ) {
 	if( w >= mw || k > mk ) {
 		cout << "Podano bledny zakres przy odczytywaniu wartosci z macierzy" <<endl;
@@ -51,10 +50,10 @@ double Matrix::operator () ( unsigned int w, unsigned int k ) {
 }
 
 Matrix & Matrix::operator = (const Matrix &mat) {
-	if( *this == mat ) return *this; // w celu zapobiegniêciu zbêdnej pracy A = A
+	if( *this == mat ) return *this; // w celu zapobiegniÄ™ciu zbÄ™dnej pracy A = A
 
 	if( ((this->mw) != (mat.mw)) || (this->mk != mat.mk) ) {
-		cout << "Wymiary macierzy siê nie zgadzaj¹" <<endl;
+		cout << "Wymiary macierzy siÄ™ nie zgadzajÄ…" <<endl;
 		return *this;
 	}
 	for( unsigned int i = 0; i<mw; i++ ) {
@@ -67,7 +66,7 @@ Matrix & Matrix::operator = (const Matrix &mat) {
 
 Matrix &Matrix::operator += (const Matrix &mat ) {
 	if( mw != mat.mw || mk != mat.mk ) {
-		cout << "Wymiary macierzy siê nie zgadzaj¹" <<endl;
+		cout << "Wymiary macierzy siÄ™ nie zgadzajÄ…" <<endl;
 		return *this;
 	}
 	for( unsigned int i = 0; i<mw; i++ ) {
@@ -81,7 +80,7 @@ Matrix &Matrix::operator += (const Matrix &mat ) {
 Matrix &Matrix::operator -= (const Matrix &mat) {
 	/* Wersja harpagan:
 	if( mw != mat.mw || mk != mat.mk ) {
-		cout << "Wymiary macierzy siê nie zgadzaj¹" <<endl;
+		cout << "Wymiary macierzy siÄ™ nie zgadzajÄ…" <<endl;
 		return *this;
 	}
 	for( unsigned int i = 0; i<mw; i++ ) {
@@ -89,7 +88,7 @@ Matrix &Matrix::operator -= (const Matrix &mat) {
 			data[i][k] -= mat.data[i][k];
 		}
 	}*/
-	//Wersja smart, ale musimy skopiowaæ zawartoœæ mat (które jest const).
+	//Wersja smart, ale musimy skopiowaÄ‡ zawartoÅ›Ä‡ mat (ktÃ³re jest const).
 	//DRY, ale za to wolniejsze?
 	Matrix temp(mat);
 	temp = mat;
@@ -124,7 +123,7 @@ Matrix &Matrix::operator *= ( double r ) {
 
 //NIE PRZEMIENNE
 Matrix &Matrix::operator *= ( const Matrix &mat) {
-	//sprawdzanie wymiarów
+	//sprawdzanie wymiarÃ³w
 	if( mw != mat.mk || mk != mat.mw ){
 		cout << "Niezgodne wymiary!" <<endl;
 		return *this;
@@ -174,14 +173,14 @@ ofstream& operator<< (ofstream &os, const Matrix &mat) {
 }
 
 istream& operator>> (istream& is, Matrix &mat) {
-	cout << "Rozpoczêto procedure wcztywania macierzy z klawiatury"<<endl;
+	cout << "RozpoczÄ™to procedure wcztywania macierzy z klawiatury"<<endl;
 	cout << "Wymiary macierzy to: " << mat.mw << "x" << mat.mk<<endl;
 	char * temp;
 	const int ts =  (mat.getK())*2; //przewidywany rozmiar bufora
 	temp = new char[ts];
 	
 	for( unsigned int i = 0; i<mat.mw; i++ ) {
-		cout << "Proszê podaæ " << mat.mk << " wartoœci typu double oddzielonych spacjami. ("<<i<<" wiersz)"<<endl;
+		cout << "ProszÄ™ podaÄ‡ " << mat.mk << " wartoÅ›ci typu double oddzielonych spacjami. ("<<i<<" wiersz)"<<endl;
 		for( unsigned int k = 0; k<mat.mk; k++ ) {
 			cin >> mat.data[i][k];
 		}
@@ -200,7 +199,7 @@ ifstream& operator>> (ifstream &is, Matrix &mat) {
 }
 
 //Funkcje pomocnicze
-//ustawia dan¹ kolumnê przy pomocy tablicy double, mo¿e byæ wiêcej elementów, nie mniej
+//ustawia danÄ… kolumnÄ™ przy pomocy tablicy double, moÅ¼e byÄ‡ wiÄ™cej elementÃ³w, nie mniej
 void Matrix::setColumn( unsigned int colnb, const vector <double> &col ) {
 	
 	if( mw > col.size() || mk <= colnb ) {
@@ -226,7 +225,7 @@ void Matrix::setVerset( unsigned int vernb, double * ver ) {
 
 Matrix operator + (const Matrix &mat1, const Matrix &mat2) {
 	if( mat1.mw != mat2.mw || mat1.mk != mat2.mk ){
-		cout << "Niezgodne wymiary! Zwracam pierwsz¹ macierz." <<endl;
+		cout << "Niezgodne wymiary! Zwracam pierwszÄ… macierz." <<endl;
 		return mat1;
 	} 
 	Matrix mat( mat1 );
@@ -236,7 +235,7 @@ Matrix operator + (const Matrix &mat1, const Matrix &mat2) {
 //NIEPRZEMIENNY
 Matrix operator - (const Matrix &mat1, const Matrix &mat2) {
 	if( mat1.mw != mat2.mw || mat1.mk != mat2.mk ){
-		cout << "Niezgodne wymiary! Zwracam pierwsz¹ macierz." <<endl;
+		cout << "Niezgodne wymiary! Zwracam pierwszÄ… macierz." <<endl;
 		return mat1;
 	} 
 	Matrix mat(mat1);
@@ -247,7 +246,7 @@ Matrix operator - (const Matrix &mat1, const Matrix &mat2) {
 
 Matrix operator * (const Matrix &mat1, const Matrix &mat2) {
 	if( mat1.mw != mat2.mw || mat1.mk != mat2.mk ){
-		cout << "Niezgodne wymiary! Zwracam pierwsz¹ macierz." <<endl;
+		cout << "Niezgodne wymiary! Zwracam pierwszÄ… macierz." <<endl;
 		return mat1;
 	} 
 	Matrix mat(mat1);
@@ -303,7 +302,7 @@ double Matrix::max()  {
 }
 
 bool Matrix::isSymetric() {
-	//musi byæ kwadratowa
+	//musi byÄ‡ kwadratowa
 	if( mw != mk )
 		return false;
 
@@ -331,26 +330,26 @@ Matrix Matrix::operator~() {
 	return transposition();
 }
 
-//Interfejs u¿ytkownika dla w³aœciwej funkcji determinant
+//Interfejs uÅ¼ytkownika dla wÅ‚aÅ›ciwej funkcji determinant
 double Matrix::determinant() {
-	/* Mo¿na równie¿ u¿yæ funkcji minor 
+	/* MoÅ¼na rÃ³wnieÅ¼ uÅ¼yÄ‡ funkcji minor 
 	 return minor( -1, -1 );
 	 */
 
-	//sprawdzanie rozmiarów
+	//sprawdzanie rozmiarÃ³w
 	if( mw != mk ){
-		cout << "Macierz powinna byæ kwadratowa!" << endl;
+		cout << "Macierz powinna byÄ‡ kwadratowa!" << endl;
 		return 0;
 	}
-	vector<unsigned int> vec; //wektor przechowuj¹cy wykreœlone kolumny
+	vector<unsigned int> vec; //wektor przechowujÄ…cy wykreÅ›lone kolumny
 	return determinant( 0, vec );
 }
 
-//Mo¿e zostaæ sukcesywnie zast¹pione przez minor( -1, -1 );
+//MoÅ¼e zostaÄ‡ sukcesywnie zastÄ…pione przez minor( -1, -1 );
 double Matrix::determinant( unsigned int l, vector<unsigned int> vec ) {
 
 	if( l == (mw-1) ) {
-		//doszlimy do konca i zwracamy szukan¹ wartoœæ
+		//doszlimy do konca i zwracamy szukanÄ… wartoÅ›Ä‡
 		for( unsigned int m = 0; m < vec.size(); m++ ) {
 			if( m != vec[m] ) {
 				return data[l][m];
@@ -374,7 +373,7 @@ double Matrix::determinant( unsigned int l, vector<unsigned int> vec ) {
 		}
 			
 		vec2.push_back( i );
-		sort(vec2.begin(), vec2.end()); //sortowanie w celu uproszczenia wyszukiwania zakazanych kolumn w sekcji wy¿ej
+		sort(vec2.begin(), vec2.end()); //sortowanie w celu uproszczenia wyszukiwania zakazanych kolumn w sekcji wyÅ¼ej
 		
 		suma += z*(data[l][i])*(determinant( l+1, vec2 ));
 		z=-z;
@@ -385,7 +384,7 @@ double Matrix::determinant( unsigned int l, vector<unsigned int> vec ) {
 
 double Matrix::minor( unsigned int wr, unsigned int kr ) {
 	if( mw != mk ){
-		cout << "Macierz powinna byæ kwadratowa!" << endl;
+		cout << "Macierz powinna byÄ‡ kwadratowa!" << endl;
 		return 0;
 	}
 	vector<unsigned int> vec;
@@ -393,30 +392,30 @@ double Matrix::minor( unsigned int wr, unsigned int kr ) {
 	return minor( 0, vec, wr );
 }
 
-//tak technicznie to jest to zmodyfikowany wyznacznik, który pozwala na wykreœlenie danej kolumny i wiersza
-//mo¿e równie¿ s³u¿yæ do obliczania wyznacznika!!! wystarczy skorzystaæ z funkcji minor( -1, -1 );
+//tak technicznie to jest to zmodyfikowany wyznacznik, ktÃ³ry pozwala na wykreÅ›lenie danej kolumny i wiersza
+//moÅ¼e rÃ³wnieÅ¼ sÅ‚uÅ¼yÄ‡ do obliczania wyznacznika!!! wystarczy skorzystaÄ‡ z funkcji minor( -1, -1 );
 double Matrix::minor( unsigned int l, vector<unsigned int> vec, unsigned int vec3 ) {
 	
-	//doszlimy do momentu gdy musimy zwróciæ wartoœæ
+	//doszlimy do momentu gdy musimy zwrÃ³ciÄ‡ wartoÅ›Ä‡
 	if( ( l == (mw-2) && vec3 == mw-2 )  //wykreslamy przedostatni wiersz i przedostatnia kolumne
 		||  (( l == (mw-1) ) )  //najbardziej naturalny przypadek, gdy po prostu dochodzimy do konca macierzy - ostatni wiersz
 		|| ( vec3 == mw-1 && l==mw-2) ) { //wykreslamy ostatni wiersz i jestesmy w przedostatni wierszu
 		
 		if( l == vec3 ) {
-			l++; //jeœli jesteœmy w wykreœlonym wierszu to pomijamy go
+			l++; //jeÅ›li jesteÅ›my w wykreÅ›lonym wierszu to pomijamy go
 		}
 
 		
 		for( unsigned int m = 0; m < vec.size(); m++ ) {
-			//szukamy kolumny, która nie zosta³a wykreœlona, dlatego sortujemy vec po dodaniu wartoœci (ni¿ej)
+			//szukamy kolumny, ktÃ³ra nie zostaÅ‚a wykreÅ›lona, dlatego sortujemy vec po dodaniu wartoÅ›ci (niÅ¼ej)
 			if( m != vec[m] ) {
 				return data[l][m];
 			}
 		}
-		//gdy wykonujemy ten blok to oznacza, ¿e zwracamy element le¿¹cy w ostatniej kolumnie
+		//gdy wykonujemy ten blok to oznacza, Å¼e zwracamy element leÅ¼Ä…cy w ostatniej kolumnie
 		
 		unsigned int y = l;
-		//przypadek gdy wykreœlamy ostatni wiersz, to przesuwamy kolumnê która zawiera zwracany element w prawo.
+		//przypadek gdy wykreÅ›lamy ostatni wiersz, to przesuwamy kolumnÄ™ ktÃ³ra zawiera zwracany element w prawo.
 		if( vec3 == mw-1 )
 			y++;
 		
@@ -424,10 +423,10 @@ double Matrix::minor( unsigned int l, vector<unsigned int> vec, unsigned int vec
 		return data[l][y];
 	}
 	
-	//jeœli jesteœmy w wykreœlonym wierszu to pomijamy go
+	//jeÅ›li jesteÅ›my w wykreÅ›lonym wierszu to pomijamy go
 	if( vec3 == l ) l++;
 
-	double suma = 0; //zwracana wartoœæ
+	double suma = 0; //zwracana wartoÅ›Ä‡
 	int z = 1;	//znak przy sumie, -1 lub 1
 	unsigned int k = 0; //przydatne przy iteracji po zakazych kolumnach w zmiennej vec (posortowanej!)
 	
@@ -442,9 +441,9 @@ double Matrix::minor( unsigned int l, vector<unsigned int> vec, unsigned int vec
 		}
 			
 		vec2.push_back( i ); //dodanie zakazanej kolumny
-		sort(vec2.begin(), vec2.end()); //sortowanie, w celu uproszczenia niektórych operacji	
+		sort(vec2.begin(), vec2.end()); //sortowanie, w celu uproszczenia niektÃ³rych operacji	
 		
-		suma += z*(data[l][i])*(minor( l+1, vec2, vec3 )); //dodawanie kolejnego sk³adnika do sumy
+		suma += z*(data[l][i])*(minor( l+1, vec2, vec3 )); //dodawanie kolejnego skÅ‚adnika do sumy
 		z=-z; //zmiana znaku przy kolejnym elemencie sumy (1 lub -1)
 	}
 

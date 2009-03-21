@@ -1,5 +1,4 @@
-﻿//Kodowanie cp-1250
-/* Zadanie 3 */
+﻿/* Zadanie 3 */
 #ifndef MAT_H
 #define MAT_H
 

@@ -1,3 +1,7 @@
+/** Autor Witold Wasilewski
+ *  Data: 21.03.2009r.
+ *  Program 3. Prezentacja.
+ */
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -6,6 +10,7 @@ using namespace std;
 
 int main( void ) {
 	Matrix mat1(4,4), mat2(4,4), mat3(4,4), mat4(4,3), mat5(2,2);
+	//Uzupe³niamy macierzê korzystaj¹c z funkcji setColumn
 	double tab1[] = {1.2,2.3, 4.5,5.6 };
 	vector<double> v1( tab1, tab1+4 );
 	double tab2[] = {2.2,3.3, 5.5,6.6 };
@@ -34,27 +39,36 @@ int main( void ) {
 	mat4.setColumn(0, v2 );
 	mat4.setColumn(1, v3 );
 	mat4.setColumn(2, v2 );
-	
 	mat5.setColumn(0,v5);
 	mat5.setColumn(1,v6);
 
-	/*cout << mat2+mat3;
-	cout << mat2-mat3;
-	cout << mat2*mat3;
-	cout << mat1*100000.0;
-	mat1 = mat2;
-	cout << (mat1==mat2)<<endl;
+	//Operatory arytmetyczne
+	cout << "Dodawanie dwoch macierzy: " << endl << mat2+mat3;
+	cout << "Odejmowanie dwoch macierzy: " << endl << mat2-mat3;
+	cout << "Mnozenie dwoch macierzy: " << endl << mat2*mat3;
+	cout << "Mnozenie macierzy przez skalar: " << endl << mat1*100000.0;
+	mat1 = mat2; //operator przypisania
+	cout << "Operator porównania: " << endl << (mat1==mat2)<<endl;
 	cout << (mat1!=mat2)<<endl;
+	cout << "Macierz wype³niona zerami" << endl;
 	cout << Matrix::allZeros(3,5)<<endl;
+	cout << "Macierz wype³niona jedynkami" << endl;
 	cout << Matrix::allOne(3,5)<<endl;
+	cout << "Macierz losowa" << endl;
 	cout << Matrix::randomMatrix( 3, 3 );
 	cout << Matrix::randomMatrix( mat1 );
+
+	cout << "Element minimalny macierzy nr1" << endl;
 	cout << mat1.min() <<endl;
+	cout << "Element maksymalny macierzy nr1" << endl;
 	cout << mat1.max() <<endl;
+	cout << "Czy macierz jest symetryczna?" << endl;
 	cout << mat1.isSymetric() <<endl;
-	cout << mat4;
-	cout << mat4.transposition();*/
-	/*double min[10];
+	//Transpozycja
+	cout << "Transpozycja macierzy nr4" << endl;
+	cout << mat4.transposition();
+	//Wyznacznik oraz macierz odwrotna
+	double min[10];
 	min[0] = mat1.determinant();
 	min[1] = mat1.minor(1,1); //2174...
 	min[2] = mat1.minor(0,1); //1144
@@ -67,25 +81,31 @@ int main( void ) {
 		cout << min[i]<<endl;
 	}
 	
+	cout << "Macierz odwrotna do macierzy nr1" <<endl<<endl;
+	cout << mat1.reverse() <<endl; 
 
 	
+	cout << "Zapis do pliku" <<endl;
+	//Zapis i odczyt z pliku
 	ifstream iplik( "input.txt", ifstream::in );
 	
 	unsigned int wi,ki;
-	
-	iplik >> wi;
+	iplik >> wi; //rozmiary wczytywane z pliku
 	iplik >> ki;
 	Matrix mat6(wi,ki);
-	
+
+	cout << "Odczyt z pliku" <<endl;
+	//odczyt z pliku
 	iplik >> mat6;
 	iplik.close();
+	//zapis do pliku
 	cout << mat6;
 	ofstream plik( "output.txt" );
 	plik << mat6.reverse();
 	plik.close();
-	//cout << mat1.reverse()<<endl;*/
 
-	//cout << mat1.determinant();
+	cout << "Wczytywanie macierz przy pomocy klawiatury." <<endl <<endl;
+	//wczytywanie z ekranu
 	Matrix mat7(2,2);
 	cin >> mat7;
 	cout << mat7;
