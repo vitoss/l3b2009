@@ -91,7 +91,7 @@ ostream& operator<< (ostream& os, const vect &v) {
     return os;
 }
 istream& operator>> (istream& is, vect &v) {
-    cout<<"Prosze podac wspolrzedne wektora.( "<< v.size<< " liczb)" <<endl;
+    cout<<"Prosze podac wspolrzedne wektora.( "<< v.size<< " liczb) [ l1, l2, l3... ]" <<endl;
     for( int i=0; i<v.size; i++ ) {
         cin>>v.arr[i];
     }
@@ -108,7 +108,3 @@ bool operator== (const vect &v1, const vect &v2) {
     }
     return true;
 }
-    
-
-//TODO rewriteArray
-
