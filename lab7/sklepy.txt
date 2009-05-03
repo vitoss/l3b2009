@@ -1,0 +1,208 @@
+0
+Sklep0
++
+0
+Filia00
+Adres filii00
++
+1
+FiliaA0
+Adres filiiA0
++
+2
+FiliaB0
+Adres filiiB0
+#
+1
+Sklep1
++
+0
+Filia01
+Adres filii01
+#
+2
+Sklep2
++
+0
+Filia02
+Adres filii02
++
+1
+FiliaA2
+Adres filiiA2
+#
+3
+Sklep3
++
+0
+Filia03
+Adres filii03
++
+2
+FiliaB3
+Adres filiiB3
+#
+4
+Sklep4
++
+0
+Filia04
+Adres filii04
++
+1
+FiliaA4
+Adres filiiA4
+#
+5
+Sklep5
++
+0
+Filia05
+Adres filii05
+#
+6
+Sklep6
++
+0
+Filia06
+Adres filii06
++
+1
+FiliaA6
+Adres filiiA6
++
+2
+FiliaB6
+Adres filiiB6
+#
+7
+Sklep7
++
+0
+Filia07
+Adres filii07
+#
+8
+Sklep8
++
+0
+Filia08
+Adres filii08
++
+1
+FiliaA8
+Adres filiiA8
+#
+9
+Sklep9
++
+0
+Filia09
+Adres filii09
++
+2
+FiliaB9
+Adres filiiB9
+#
+10
+Sklep10
++
+0
+Filia010
+Adres filii010
++
+1
+FiliaA10
+Adres filiiA10
+#
+11
+Sklep11
++
+0
+Filia011
+Adres filii011
+#
+12
+Sklep12
++
+0
+Filia012
+Adres filii012
++
+1
+FiliaA12
+Adres filiiA12
++
+2
+FiliaB12
+Adres filiiB12
+#
+13
+Sklep13
++
+0
+Filia013
+Adres filii013
+#
+14
+Sklep14
++
+0
+Filia014
+Adres filii014
++
+1
+FiliaA14
+Adres filiiA14
+#
+15
+Sklep15
++
+0
+Filia015
+Adres filii015
++
+2
+FiliaB15
+Adres filiiB15
+#
+16
+Sklep16
++
+0
+Filia016
+Adres filii016
++
+1
+FiliaA16
+Adres filiiA16
+#
+17
+Sklep17
++
+0
+Filia017
+Adres filii017
+#
+18
+Sklep18
++
+0
+Filia018
+Adres filii018
++
+1
+FiliaA18
+Adres filiiA18
++
+2
+FiliaB18
+Adres filiiB18
+#
+19
+Sklep19
++
+0
+Filia019
+Adres filii019
+#
